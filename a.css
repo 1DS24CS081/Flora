@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary: #1b3022;
+    --accent: #c5a059;
+    --bg: #fdfdfb;
+    --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    overflow-x: hidden;
+}
+
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%; background: var(--white);
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.logo { font-family: 'Playfair Display'; font-size: 2rem; color: var(--primary); font-weight: 700; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: #333; font-weight: 500; cursor: pointer; }
+.nav-links a:hover { color: var(--accent); }
+
+.hero {
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://facts.net/wp-content/uploads/2021/09/assorted-plants-in-a-room.jpg');
+    background-size: cover; background-position: center;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: white; text-align: center;
+}
+.hero h1 { font-family: 'Playfair Display'; font-size: 4.5rem; margin-bottom: 20px; }
+
+.btn { padding: 14px 35px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; text-transform: uppercase; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--accent); letter-spacing: 1px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+.reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.container { padding: 80px 8%; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+.card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.card:hover { transform: scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+.card img { width: 100%; height: 350px; object-fit: cover; }
+.card-body { padding: 25px; text-align: center; }
+
+.modal { 
+    display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
+    width: 100%; height: 100%; background: rgba(0,0,0,0.6); 
+    backdrop-filter: blur(8px);
+}
+.modal-content { background: white; width: 400px; margin: 10% auto; padding: 40px; border-radius: 20px; position: relative; }
+.close { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; }
+input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }

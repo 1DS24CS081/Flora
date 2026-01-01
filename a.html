@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flora | Premium Botanical Boutique</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <link rel="stylesheet" href="a.css">
+
+    <style>
+        .qty-control {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            padding: 5px;
+            width: 100%;
+        }
+        .qty-control button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            padding: 5px 20px;
+            cursor: pointer;
+        }
+        .qty-control span { font-weight: 600; font-size: 1.1rem; }
+        
+        #cartList p {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Styling for Q8 Section */
+        .special-offers {
+            background-color: #1b382a; 
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 8%;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">FLORA</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Collection</a></li>
+            <li><a onclick="openModal('sellModal')">Sell</a></li>
+            <li><a onclick="openModal('feedbackModal')">Feedback</a></li>
+            <li><a onclick="toggleGallery()" style="cursor:pointer; color:var(--accent)">Show/Hide Gallery</a></li>
+        </ul>
+        <div>
+            <button class="btn-primary btn" style="padding: 10px 25px; border: 1px solid #c5a059;" onclick="openModal('loginModal')">Login</button>
+            <button class="btn" style="background: rgba(27, 48, 34, 0.1); font-size: 1.2rem; margin-left: 10px;" onclick="openModal('cartModal')">🛒 <span id="count">0</span></button>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1 class="animate__animated animate__fadeInDown">Rare Botanicals</h1>
+        <p>Expertly curated greenery for the modern home.</p><br>
+        <a href="#products"><button class="btn btn-primary">Shop Collection</button></a>
+    </header>
+
+    <section id="offers" class="special-offers">
+        <h2>🎄 Christmas Special: 10% Discount on orders over $1000!</h2>
+    </section>
+
+    <section class="container reveal" id="products">
+        <h2 style="font-family: 'Playfair Display'; font-size: 3rem; text-align: center; margin-bottom: 50px;">The Gallery</h2>
+        <div class="grid" id="plantGrid"></div>
+    </section>
+
+    <div id="loginModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('loginModal')">&times;</span><h2>Welcome</h2><form id="loginForm"><input type="email" placeholder="Email" required><input type="password" placeholder="Password" required><button type="submit" class="btn btn-primary" style="width:100%">Login</button></form></div></div>
+    
+    <div id="sellModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('sellModal')">&times;</span><h2>List Plant</h2><form id="sellForm"><input type="text" id="newName" placeholder="Name" required><input type="number" id="newPrice" placeholder="Price" required><input type="text" id="newImg" placeholder="Image Address" required><button type="submit" class="btn btn-primary" style="width:100%">List Now</button></form></div></div>
+    
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('feedbackModal')">&times;</span>
+            <h2>Feedback</h2>
+            <form id="feedbackForm">
+                <input type="email" id="fbEmail" placeholder="Your Email" required>
+                <input type="text" id="fbMobile" placeholder="10-digit Mobile Number" required>
+                <textarea id="fbText" rows="4" placeholder="Your experience..." required></textarea>
+                
+                <button type="button" class="btn btn-primary" style="width:100%" onclick="validateAndSave()">Submit & Download</button>
+                <button type="button" class="btn" style="width:100%; margin-top:10px;" onclick="clearAndThank()">Clear Form</button>
+            </form>
+            <div id="displayArea" style="margin-top:15px; color:green; font-weight:bold; text-align:center;"></div>
+        </div>
+    </div>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('cartModal')">&times;</span>
+            <h2>Your Bag</h2>
+            <div id="cartList"></div>
+            <hr>
+            <p>Total: $<span id="total">0</span></p>
+            <button class="btn btn-primary" style="width:100%; margin-top:20px;" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <script src="a.js"></script>
+</body>
+</html>
